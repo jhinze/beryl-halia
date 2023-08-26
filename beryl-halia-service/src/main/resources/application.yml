@@ -1,0 +1,8 @@
+beryl-halia:
+  ignoreSuffixes: js,css,map
+  access-tokens: ${ACCESS_TOKENS}
+
+spring:
+  web:
+    resources:
+      static-locations: ${STATIC_LOCATIONS:classpath:/static}
