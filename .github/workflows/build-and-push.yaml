@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 19.x
-      - run: cd beryl-halia-web && npm ci
+      - run: cd beryl-halia-web && npm ci --legacy-peer-deps
       - run: beryl-halia-web && npm run build --if-present
       - name: Build and push
         id: docker_build
