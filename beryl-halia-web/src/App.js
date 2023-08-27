@@ -44,6 +44,13 @@ function App() {
                 <a href={"content/beryl-all-images.zip"} className={"text"}>
                     <h4>download all high resolution as zip file</h4>
                 </a>
+                <div className={"text"}>
+                    <footer>
+                        <small>
+                            Copyright &copy; 2023 <a className={"text"} href={"https://www.hinze.dev"}>hinze.dev</a> All Rights Reserved
+                        </small>
+                    </footer>
+                </div>
             </div>
         </div>
     );
