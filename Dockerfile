@@ -3,9 +3,7 @@ WORKDIR /code
 ADD . /code
 RUN mvn clean package -Pnative
 
-FROM ubuntu:18.04
-RUN apt update
-RUN apt install libc6
+FROM debian:stable-slim
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
 WORKDIR /opt/application/
 RUN chown 1001 /opt/application/ \
