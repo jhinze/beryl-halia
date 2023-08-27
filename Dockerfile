@@ -3,7 +3,7 @@ WORKDIR /code
 ADD . /code
 RUN mvn clean package -Pnative
 
-FROM ubuntu:22.04
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.8
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
 WORKDIR /opt/application/
 RUN chown 1001 /opt/application/ \
