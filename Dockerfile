@@ -3,7 +3,9 @@ WORKDIR /code
 ADD . /code
 RUN mvn clean package -Pnative
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.8
+FROM ubuntu:18.04
+RUN sudo apt update
+RUN sudo apt install libc6
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
 WORKDIR /opt/application/
 RUN chown 1001 /opt/application/ \
