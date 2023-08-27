@@ -6,7 +6,11 @@ RUN mvn clean package -Pnative
 FROM alpine:3
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
 WORKDIR /opt/application/
-COPY --from=builder /code/beryl-halia-service/target/beryl-halia-service /opt/application/service
-COPY beryl-halia-web/build /opt/application/resources
+RUN chown 1001 /opt/application/ \
+    && chmod "g+rwX" /opt/application/ \
+    && chown 1001:root /opt/application/
+COPY --from=builder --chown=1001:root /code/beryl-halia-service/target/beryl-halia-service /opt/application/service
+COPY --chown=1001:root beryl-halia-web/build /opt/application/resources
 EXPOSE 8080
+USER 1001
 CMD ["./service"]
