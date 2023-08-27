@@ -3,7 +3,7 @@ WORKDIR /code
 ADD . /code
 RUN mvn clean package -Pnative
 
-FROM alpine:3
+FROM ubuntu:22.04
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
 RUN apk add libc6-compat
 WORKDIR /opt/application/
