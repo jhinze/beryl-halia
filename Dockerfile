@@ -5,7 +5,6 @@ RUN mvn clean package -Pnative
 
 FROM ubuntu:22.04
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
-RUN apk add libc6-compat
 WORKDIR /opt/application/
 RUN chown 1001 /opt/application/ \
     && chmod "g+rwX" /opt/application/ \
