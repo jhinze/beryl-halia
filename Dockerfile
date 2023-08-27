@@ -4,8 +4,8 @@ ADD . /code
 RUN mvn clean package -Pnative
 
 FROM ubuntu:18.04
-RUN sudo apt update
-RUN sudo apt install libc6
+RUN apt update
+RUN apt install libc6
 ENV STATIC_LOCATIONS="file:/opt/application/resources"
 WORKDIR /opt/application/
 RUN chown 1001 /opt/application/ \
