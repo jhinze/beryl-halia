@@ -1,4 +1,5 @@
 FROM quay.io/quarkus/ubi-quarkus-native-image:22.3-java17 as builder
+USER root
 ENV JAVA_OPTS="-Xms6g -Xmx6g"
 ENV MAVEN_OPTS="-Xms6g -Xmx6g"
 RUN microdnf install maven
