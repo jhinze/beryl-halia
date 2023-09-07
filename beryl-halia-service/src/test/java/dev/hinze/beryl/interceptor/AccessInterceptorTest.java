@@ -44,6 +44,21 @@ class AccessInterceptorTest {
     }
 
     @Test
+    void shouldReturnTrueWhenAccessTokenIsInReferer() {
+        var accessToken = "1";
+
+        when(httpServletRequest.getHeader(eq("referer")))
+                .thenReturn("https://web.site.com/?accessToken=" + accessToken);
+        when(httpServletRequest.getServletPath())
+                .thenReturn("/content");
+        when(accessTokenService.isValid(eq(accessToken)))
+                .thenReturn(true);
+
+        assertThat(accessInterceptor.preHandle(httpServletRequest, null, null))
+                .isTrue();
+    }
+
+    @Test
     void shouldReturnFalseWhenSuffixNotInRequest() {
         when(httpServletRequest.getServletPath())
                 .thenReturn("/foo.jpg");
